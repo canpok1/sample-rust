@@ -1,0 +1,96 @@
+{
+	// Place your sample-rust ワークスペース snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Input stdin as string": {
+		"scope": "rust",
+		"prefix": "input stdin as string",
+		"body": [
+			"let ${1:s}:String = {",
+			"\tlet mut line = String::new();",
+			"\tstd::io::stdin().read_line(&mut line).unwrap();",
+			"\tline.trim_end().to_owned()",
+			"};"
+		],
+		"description": "Read stdin as single string"
+	},
+	"Input stdin as strings": {
+		"scope": "rust",
+		"prefix": "input stdin as strings",
+		"body": [
+			"let (${1:s1}, ${2:s2}) = {",
+			"\tlet mut line = String::new();",
+			"\tstd::io::stdin().read_line(&mut line).unwrap();",
+			"\tlet mut ws = line.trim_end().split_whitespace();",
+    		"\tlet s1: String = ws.next().unwrap().parse().unwrap();",
+			"\tlet s2: String = ws.next().unwrap().parse().unwrap();",
+			"\t(s1, s2)",
+			"};"
+		],
+		"description": "Read stdin as strings"
+	},
+	"Input stdin as string vector": {
+		"scope": "rust",
+		"prefix": "input stdin as string vector",
+		"body": [
+			"let ${1:s}:Vec<String> = {",
+			"\tlet mut line = String::new();",
+			"\tstd::io::stdin().read_line(&mut line).unwrap();",
+			"\tline.trim_end().split_whitespace().map(|v| v.to_string()).collect()",
+			"};"
+		],
+		"description": "Read stdin as string vector"
+	},
+	"Input stdin as number": {
+		"scope": "rust",
+		"prefix": "input stdin as number",
+		"body": [
+			"let ${1:n}: ${2:usize} = {",
+			"\tlet mut line = String::new();",
+			"\tstd::io::stdin().read_line(&mut line).unwrap();",
+			"\tline.trim_end().parse().unwrap()",
+			"};"
+		],
+		"description": "Read stdin as single number"
+	},
+	"Input stdin as numbers": {
+		"scope": "rust",
+		"prefix": "input stdin as numbers",
+		"body": [
+			"let (${1:n1}, ${2:n2}) = {",
+			"\tlet mut line = String::new();",
+			"\tstd::io::stdin().read_line(&mut line).unwrap();",
+			"\tlet mut ws = line.trim_end().split_whitespace();",
+    		"\tlet n1: ${3:usize} = ws.next().unwrap().parse().unwrap();",
+			"\tlet n2: ${3:usize} = ws.next().unwrap().parse().unwrap();",
+			"\t(n1, n2)",
+			"};"
+		],
+		"description": "Read stdin as numbers"
+	},
+	"Input stdin as number vector": {
+		"scope": "rust",
+		"prefix": "input stdin as number vector",
+		"body": [
+			"let ${1:n}: Vec<${2:usize}> = {",
+			"\tlet mut line = String::new();",
+			"\tstd::io::stdin().read_line(&mut line).unwrap();",
+			"\tline.trim_end().split_whitespace().map(|v| v.parse().unwrap()).collect()",
+			"};"
+		],
+		"description": "Read stdin as number vector"
+	}
+}
