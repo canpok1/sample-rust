@@ -92,5 +92,44 @@
 			"};"
 		],
 		"description": "Read stdin as number vector"
+	},
+	"Input stdin all as string vector": {
+		"scope": "rust",
+		"prefix": "input stdin all as string vector",
+		"body": [
+    		"let mut ${1:stdin}: Vec<String> = Vec::new();",
+    		"loop {",
+        	"\tlet mut s = String::new();",
+        	"\tlet size = std::io::stdin().read_line(&mut s).unwrap();",
+        	"\tif size == 0 {",
+        	"\t    break;",
+        	"\t}",
+        	"\tstdin.push(s.trim_end().to_string());",
+    		"}"
+		],
+		"description": "Read stdin all as string vector"
+	},
+	"hello world with test": {
+		"scope": "rust",
+		"prefix": "hello world with test",
+		"body": [
+			"fn main() {",
+			"\tfor o in run() {",
+			"\t\tprintln!(\"{}\", o);",
+			"\t}",
+			"}",
+			"",
+			"fn run() -> Vec<String> {",
+			"\tlet mut buf = Vec::new();",
+			"\tbuf.push(format!(\"{}\", \"hello world!\"));",
+			"\tbuf",
+			"}",
+			"",
+			"#[test]",
+			"fn test_run() {",
+			"\tassert_eq(run(), vec!(\"hello world!\"));",
+			"}",
+		],
+		"description": "Base code with test"
 	}
 }
