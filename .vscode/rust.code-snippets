@@ -127,7 +127,7 @@
 			"",
 			"#[test]",
 			"fn test_run() {",
-			"\tassert_eq(run(), vec!(\"hello world!\"));",
+			"\tassert_eq!(run(), vec!(\"hello world!\"));",
 			"}",
 		],
 		"description": "Base code with test"
