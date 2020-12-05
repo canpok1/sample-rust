@@ -1,4 +1,3 @@
 FROM rust:latest
 
 ENV USER canpok1
-ENV RUST_BACKTRACE 1
